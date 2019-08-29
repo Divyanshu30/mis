@@ -1,0 +1,80 @@
+@import './../../../../theme';
+
+.title-container{
+    width: 75%;
+    margin: 40px auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+h5{
+    flex: 3.5;
+ }
+
+.button-wrapper{
+    display: flex;
+    justify-content: space-around;
+    flex: 1;
+}
+
+.form-container{
+    width: 75%;
+    margin: auto;
+}
+
+.form-button-group{
+    margin-top: 25px;
+    width: 75% !important;
+    margin: auto !important;
+}
+
+.form-button{
+    margin: 40px 10px;
+    margin-left: 7.5px;
+}
+
+input {
+    &::placeholder{
+        color: $placeholder;
+    }
+    &:disabled{
+        color: $placeholder - 50;
+    }
+}
+
+.error{
+    color: $invalid;
+    margin-top:-5px !important;
+}
+
+.form-container input {
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.reset-button{
+    background: $resetButton;
+}
+
+.submit-button{
+    background: $submitButton;
+}
+
+.cancel-button{
+    background: $cancelButton;
+}
+
+mz-input-container, mz-select-container,mz-datepicker-container {
+    display: inline-block;
+    padding: 0 20px;
+    width: 50%;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+@media(max-width: 767px) {
+    mz-input-container, mz-select-container,mz-datepicker-container {
+        display: block;
+        width: 100%;
+    }
+}

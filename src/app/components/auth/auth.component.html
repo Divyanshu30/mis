@@ -1,0 +1,66 @@
+<div class="row" @fadeInState *ngIf="load">
+    <div class="col s8 offset-s2" [@routeSlideState]="formAnimationState">
+        <div class="row auth" @fadeInState>
+            <div class="login-form">
+                <h5 class="center-align" style="margin-bottom:40px;">Please Login</h5>
+                <div class="col s8 offset-s2">
+                    <form #loginForm="ngForm" (ngSubmit)="onLogin(loginForm)">
+            
+                    <div [ngModelGroup]="'user'">
+                        <mz-input-container>
+                            <input mz-input
+                                [name]="'username'"
+                                [label]="'User Name'"
+                                type="text"
+                                ngModel
+                                required
+                                autofocus
+                                [disabled]="loggingIn">
+                        </mz-input-container>
+            
+                        <div class="input-password">
+                            <mz-input-container>
+                                <input mz-input
+                                    [name]="'password'"
+                                    [label]="'Password'"
+                                    type="password" 
+                                    ngModel
+                                    required
+                                    [disabled]="loggingIn">
+                            </mz-input-container>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col s6">
+                            <div class="left">
+                                <h6 style="color: #ef5350;" *ngIf="loginError">Invalid details! Please try again.</h6>
+                                <h6 style="color: #ef5350;" *ngIf="couldNotLogin">Sorry, there was a problem with connection. Please try again.</h6>
+                            </div>
+                        </div>
+
+                        <div class="col s6">
+                            <div class="right">
+                                <button mz-button
+                                    type="submit"
+                                    class="blue darken-1"
+                                    *ngIf="!loggingIn && !loginSuccess"
+                                    [disabled]="!loginForm.valid"
+                                    [@buttonValidState]="loginForm.valid ? 'valid' : 'invalid'"
+                                >Submit</button>
+                                 <button type="submit" class="loader" style="background: transparent" *ngIf="loggingIn && !loginSuccess"></button>
+                                 <h5 
+                                    *ngIf="loginSuccess"
+                                    @bounceInState
+                                    class="success">
+                                Success!</h5>
+                            </div>
+                        </div>
+                    </div>
+        
+                     </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

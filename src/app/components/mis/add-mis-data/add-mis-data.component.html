@@ -1,0 +1,541 @@
+<div class="title-container">
+        <h5>{{title}}</h5>
+        <div class="button-wrapper">
+
+            <div class="valign-wrapper">
+                <button mz-button flat
+                    type="button" 
+                    class="form-button reset-button" 
+                    (click)="onResetOrCancel('reset')"
+                    [disabled]="!misForm.dirty"
+                    >RESET
+                </button>
+            </div>
+                
+            <div class="valign-wrapper">
+                <button mz-button flat
+                    type="button" 
+                    class="right cancel-button" 
+                    (click)="onResetOrCancel('cancel')"
+                    >Cancel
+                </button>
+            </div>
+        
+        </div>
+</div>
+
+<form #misForm="ngForm" (ngSubmit)="onAddData()">
+
+    <div class="form-container">
+
+        <mz-input-container>
+            <input mz-input type="text" label="PO Number" name="poNumber" maxlength="20" ngModel>
+        </mz-input-container>
+
+
+        <mz-datepicker-container>
+            <input mz-datepicker
+                name="tentativePoDate"
+                [options]="optionsWithMinDate"
+                min="today"
+                label="Tentative PO Date"
+                ngModel
+                type="text">
+        </mz-datepicker-container>
+
+        <mz-input-container>
+            <input mz-input type="text" label="Po Description" name="poDescription" maxlength="256" ngModel>
+        </mz-input-container>
+ 
+        <mz-input-container>
+             <input mz-input type="text" label="TCU Code" name="tcuCode" maxlength="32" ngModel>
+        </mz-input-container>
+
+        <mz-select-container [ngClass]="teamLead.value != '' ? 'unRequire' : 'required'">
+            <select mz-select
+                name="teamLead"
+                id="options-select"
+                ngModel
+                #teamLead
+                label="Team Lead"
+                placeholder="Select Team Lead"
+                required>
+                    <option>Rakesh Pawa</option>
+                    <option>Amit Dubey</option>
+                    <option>Ravi Ranjan Kumar</option> 
+            </select>
+        </mz-select-container>
+
+        <mz-select-container [ngClass]="projectName.value ? 'unRequire' : 'required'">
+            <select mz-select
+            name="projectName"
+            ngModel
+            #projectName
+            label="Project Name"
+            placeholder="Select Project Name"
+            required>
+                <option>Aadhaar</option>
+                <option>Aasaan</option>
+                <option>SOA</option>
+                <option>SOA API</option>
+                <option>Chat BOT</option>
+                <option>ADM</option>
+                <option>Preissuance</option>
+                <option>EAPP</option>
+                <option>IFTIS</option>
+                <option>Inquizzitive</option>
+                <option>Report</option>
+                <option>Support Resource</option>
+                <option>Mapp</option>
+                <option>SIC</option>
+                <option>Polling App</option>
+                <option>DEVOPS</option>
+                <option>ESL</option>
+                <option>Raspberry Pi</option>
+                <option>Mpower</option>
+                <option>UNO</option>
+                <option>NEO</option>
+                <option>Msales</option>
+                <option>MyLife</option>
+                <option>MyFlow</option>
+                <option>Fulfillment</option>
+                <option>Mogae</option>
+                <option>Silaris</option>
+                <option>Other</option>        
+            </select>
+        </mz-select-container>
+
+        <mz-select-container [ngClass]="technology.value ? 'unRequire' : 'required'">
+            <select mz-select
+            name="technology"
+            ngModel
+            #technology
+            label="Technology"
+            placeholder="Select Technology"
+            required>
+                <option>Java</option>
+                <option>.Net</option>
+            </select>
+        </mz-select-container> 
+
+        <mz-select-container [ngClass]="relNonRel.value ? 'unRequire' : 'required'">
+            <select mz-select
+            name="relNonRel"
+            ngModel
+            #relNonRel
+            label="Rel / Non-Rel"
+            placeholder="Rel / Non-Rel"
+            required>
+                <option>Release</option>
+                <option>Non-Release</option>    
+                </select>
+        </mz-select-container>
+
+        <mz-select-container [ngClass]="teamSplit.value ? 'unRequire' : 'required'">
+            <select mz-select
+            name="teamSplit"
+            ngModel
+            #teamSplit
+            label="Team"
+            placeholder="Select Team"
+            required>
+                <option>Java Team</option>
+                <option>DB Team</option>  
+            </select>
+        </mz-select-container>
+
+        <mz-select-container [ngClass]="accountCodes.value ? 'unRequire' : 'required'">
+            <select mz-select
+            name="accountCodes"
+            givenName="Account Codes"
+            ngModel
+            #accountCodes
+            label="Account Code"
+            placeholder="Select Account Code"
+            required>
+            <option>Aadhaar</option>
+            <option>Aasaan</option>
+            <option>SOA</option>
+            <option>SOA API</option>
+            <option>Chat BOT</option>
+            <option>ADM</option>
+            <option>Preissuance</option>
+            <option>EAPP</option>
+            <option>IFTIS</option>
+            <option>Inquizzitive</option>
+            <option>Report</option>
+            <option>Support Resource</option>
+            <option>Mapp</option>
+            <option>SIC</option>
+            <option>Polling App</option>
+            <option>DEVOPS</option>
+            <option>ESL</option>
+            <option>Raspberry Pi</option>
+            <option>Mpower</option>
+            <option>UNO</option>
+            <option>NEO</option>
+            <option>Msales</option>
+            <option>MyLife</option>
+            <option>MyFlow</option>
+            <option>Fulfillment</option>
+            <option>Mogae</option>
+            <option>Silaris</option>
+            <option>Other</option>
+            </select>
+        </mz-select-container> 
+
+        <mz-select-container [ngClass]="fscr.value ? 'unRequire' : 'required'">
+            <select mz-select
+            name="fscr"
+            ngModel
+            #fscr
+            label="FS/CR"
+            placeholder="Select FS/CR"
+            required>
+                <option>FS</option>
+                <option>CR</option>
+            </select>
+        </mz-select-container> 
+
+        <mz-input-container [ngClass]="itemName.value ? 'unRequire' : 'required'">
+                <input mz-input type="text" label="Item Name" name="itemName" maxlength="256" [(ngModel)]="ItemName" #itemName required>
+                <!-- <span>{{ItemNameLength - ItemName.length}}</span> -->
+        </mz-input-container>
+
+        <mz-input-container [ngClass]="fscrName.value ? 'unRequire' : 'required'">
+             <input mz-input type="text" label="FS/CR Name" name="fscrName" maxlength="32" ngModel #fscrName required>
+        </mz-input-container>
+
+        <mz-select-container [ngClass]="currentStatus.value ? 'unRequire' : 'required'">
+            <select mz-select
+            name="currentStatus"
+            ngModel
+            #currentStatus
+            label="Current Status"
+            placeholder="Select Current Status"
+            required>
+                <option>OnHold</option>
+                <option>Under Analysis</option>
+                <option>Under Development</option>
+                <option>Under UAT</option>
+                <option>Production</option>
+                <option>Completed</option>
+            </select>
+        </mz-select-container>
+
+        <mz-input-container>
+             <input mz-input type="text" label="Challenge" name="challenge" maxlength="256" ngModel>
+        </mz-input-container>
+
+        <mz-input-container>
+            <input mz-input type="text" label="General Remark" name="generalRemark"  maxlength="256" ngModel>
+        </mz-input-container>
+
+        <mz-select-container>
+            <select mz-select
+            name="patch"
+            ngModel
+            label="Patch"
+            placeholder="Select Patch">
+                <option>MLI</option>
+                <option>Non MLI</option>
+            </select>
+        </mz-select-container>
+
+        <mz-select-container [ngClass]="assignedTo.value ? 'unRequire' : 'required'">
+            <select mz-select
+            name="assignedTo"
+            ngModel
+            #assignedTo
+            label="Assisned To"
+            placeholder="Select Assignee"
+            required>
+                <option>Rakesh Pawa</option>
+                <option>Amit Dubey</option>
+                <option>Ravi Ranjan Kumar</option>
+                <option>Manish Negi</option>
+                <option>Saurabh Kumar</option>
+            </select>
+        </mz-select-container> 
+    
+        <mz-input-container [ngClass]="totalEffort.value ? 'unRequire' : 'required'">
+            <input mz-input type="number" min="0" label="Total Effort" (keypress)="onEffortChange($event)" name="totalEffort" [(ngModel)]="TotalEffort" #totalEffort required>
+        </mz-input-container>
+
+        <mz-input-container [ngClass]="totalEffortForMonth.value ? 'unRequire' : 'required'">
+            <input mz-input label="Total Effort For The Month" type="number" min="0" (keypress)="onEffortChangeForMonth($event)" name="totalEffortForMonth" [(ngModel)]="TotalEffortForMonth" #totalEffortForMonth required>
+        </mz-input-container>
+    
+        <mz-select-container>
+                <select mz-select
+                    name="effortApprovalBy"
+                    ngModel
+                    label="Effort Approval By"
+                    placeholder="Select Effort Approval By">
+                    <option>Aaditya Trivedi</option>
+                    <option>Aman Srivastawa</option>
+                    <option>Priyanka Mittal</option>
+                    <option>Mayank Gandhi</option>
+                    <option>Anshuman Tripathi</option>
+                    <option>Arun Yadav</option>
+                    <option>Manish Sachdeva</option>
+                    <option>Mukesh Verma</option>
+                    <option>Harsh Verma</option>
+                    <option>Sameer Sahay</option>
+                    <option>Senthilnathan</option>
+                    <option>Kapil Dalal</option>
+                    <option>Nikhil Chandhoke</option>
+                    <option>Sunil Dutt</option>
+                    <option>Dhiraj Verma</option>
+                    <option>Rohit Kumar</option>
+                    <option>Amarjit Mahadik</option>
+                    <option>Anshul Thakur</option>
+                    <option>Nishant Kumar</option>
+                    <option>Manoj Gaur</option>
+                    <option>Gautam Kukreja</option>
+                </select>
+        </mz-select-container> 
+    
+        <mz-datepicker-container [ngClass]="effortApprovalDate.value ? 'unRequire' : 'required'">
+            <input mz-datepicker
+                name="effortApprovalDate"
+                #effortApprovalDate
+                label="Effort Approval Date"
+                ngModel
+                type="text">
+        </mz-datepicker-container>
+    
+        <mz-select-container [ngClass]="approvalStatus.value ? 'unRequire' : 'required'">
+            <select mz-select
+            name="approvalStatus"
+            ngModel = "approvalStatus"
+            #approvalStatus
+            label="Approval Status"
+            placeholder="Select Approval Status"
+            required>
+                <option>Approved</option>
+                <option>Yet to be approved</option>
+            </select>
+        </mz-select-container> 
+    
+        <mz-datepicker-container [ngClass]="requestReceivedDate.value ? 'unRequire' : 'required'">
+            <input mz-datepicker
+                type="text"
+                name="requestReceivedDate"
+                ngModel
+                #requestReceivedDate
+                label="Request Received Date"
+                required>
+        </mz-datepicker-container>
+    
+        <mz-select-container [ngClass]="requestedByBSA.value ? 'unRequire' : 'required'">
+            <select mz-select
+                name="requestedByBSA"
+                ngModel = "requestedByBSA"
+                #requestedByBSA
+                label="Requested By BSA"
+                type="text"
+                placeholder="Select BSA"
+                required>
+                <option>Aaditya Trivedi</option>
+                <option>Aman Srivastawa</option>
+                <option>Priyanka Mittal</option>
+                <option>Mayank Gandhi</option>
+                <option>Anshuman Tripathi</option>
+                <option>Arun Yadav</option>
+                <option>Manish Sachdeva</option>
+                <option>Mukesh Verma</option>
+                <option>Harsh Verma</option>
+                <option>Sameer Sahay</option>
+                <option>Senthilnathan</option>
+                <option>Kapil Dalal</option>
+                <option>Nikhil Chandhoke</option>
+                <option>Sunil Dutt</option>
+                <option>Dhiraj Verma</option>
+                <option>Rohit Kumar</option>
+                <option>Amarjit Mahadik</option>
+                <option>Anshul Thakur</option>
+                <option>Nishant Kumar</option>
+                <option>Manoj Gaur</option>
+                <option>Gautam Kukreja</option>
+            </select>
+        </mz-select-container> 
+    
+        <mz-datepicker-container>
+            <input mz-datepicker
+                name="walkthoughPlannedDate"
+                ngModel
+                [options]="options"
+                label="Walkthough Planned date"
+                type="text">
+        </mz-datepicker-container>
+    
+        <mz-datepicker-container [ngClass]="devPlannedStartDate.value ? 'unRequire' : 'required'">
+            <input mz-datepicker
+                name="devPlannedStartDate"
+                ngModel
+                #devPlannedStartDate
+                label="Dev Planned Start date"
+                type="text"
+                required>
+        </mz-datepicker-container>
+    
+        <mz-datepicker-container [ngClass]="devPlannedEndDate.value ? 'unRequire' : 'required'">
+            <input mz-datepicker
+                name="devPlannedEndDate"
+                ngModel
+                #devPlannedEndDate
+                label="Dev Planned End date"
+                type="text" 
+                required>
+        </mz-datepicker-container>
+    
+        <mz-datepicker-container [ngClass]="uatRelPlannedDate.value ? 'unRequire' : 'required'">
+            <input mz-datepicker
+                name="uatRelPlannedDate"
+                ngModel
+                #uatRelPlannedDate
+                [options]="options"
+                label="UAT Rel Planned date"
+                type="text"
+                required>
+        </mz-datepicker-container>
+    
+        <mz-datepicker-container>
+           <input mz-datepicker
+                name="actualWalkthroughDate"
+                ngModel
+                label="Actual Walkthrough Date"
+                type="text">
+        </mz-datepicker-container>
+    
+        <mz-datepicker-container [ngClass]="assignedDevelopmentDate.value ? 'unRequire' : 'required'">
+            <input mz-datepicker
+                name="assignedDevelopmentDate"
+                ngModel
+                #assignedDevelopmentDate
+                label="Assigned for Development Date"
+                type="text"
+                required>
+        </mz-datepicker-container>
+    
+        <mz-datepicker-container>
+            <input mz-datepicker
+                name="actualDevStartDate"
+                ngModel
+                label="Actual Dev Start Date"
+                type="text">
+        </mz-datepicker-container>
+        
+        <mz-datepicker-container>
+            <input mz-datepicker
+                name="actualDevEndDate"
+                ngModel
+                label="Actual Dev End Dat"
+                type="text">
+        </mz-datepicker-container>
+    
+        <mz-datepicker-container>
+            <input mz-datepicker
+                name="uatPromotionSignOffDate"
+                ngModel
+                label="UAT Promotion/Sent for Sign-off Date"
+                type="text">
+        </mz-datepicker-container>
+    
+        <mz-input-container>
+            <input mz-input label="Delayed Delivery" type="text" maxlength="256" name="delayedDelivery" ngModel>
+        </mz-input-container>
+    
+        <mz-input-container>
+            <input mz-input label="Reason of Delay" type="text"  maxlength="256" name="reasonForDelay" ngModel>
+        </mz-input-container>
+    
+        <mz-select-container [ngClass]="tsDocument.value ? 'unRequire' : 'required'">
+            <select mz-select
+                name="tsDocument"
+                ngModel
+                #tsDocument
+                label="TS Document"
+                placeholder="TS Document"
+                required>
+                    <option>Prepared</option>
+                    <option>Pending</option>
+                    <option>Not Required</option>
+            </select>
+        </mz-select-container> 
+    
+        <mz-input-container>
+            <input mz-input label="Reviewed By" type="text" maxlength="32" name="reviewedBy" ngModel>
+        </mz-input-container>
+    
+        <mz-datepicker-container>
+            <input mz-datepicker
+                name="promotionDate"
+                ngModel
+                [options]="options"
+                label="Promotion Date"
+                type="text">
+        </mz-datepicker-container>
+    
+        <mz-select-container>
+            <select mz-select
+                name="promotedBy"
+                ngModel
+                label="Promoted By"
+                placeholder="Select Promoted By">
+                    <option>Rakesh Pawa</option>
+                    <option>Amit Dubey</option>
+                    <option>Ravi Ranjan Kumar</option>
+            </select>
+        </mz-select-container> 
+    
+        <mz-input-container>
+            <input mz-input label="Promotion Ticket No." type="text" maxlength="32" name="promotionTicketNumber" ngModel>
+        </mz-input-container>
+    
+        <mz-select-container [ngClass]="misGroup.value ? 'unRequire' : 'required'">
+            <select mz-select
+            name="misGroup"
+            ngModel
+            #misGroup
+            label="MIS Group"
+            placeholder="Select MIS Group"
+            required>
+                <option>Java</option>
+                <option>.Net</option>
+            </select>
+        </mz-select-container> 
+    
+        <mz-input-container>
+            <input mz-input label="Invoice Number" type="text" maxlength="32" name="invoiceNumber" ngModel>
+        </mz-input-container>
+
+        <mz-input-container [ngClass]="misPeriod.value ? 'unRequire' : 'required'">
+            <input mz-input type="text" label="MIS Period" name="misPeriod" [ngModel]=requestReceivedDate.value #misPeriod required>
+        </mz-input-container>
+
+    </div>
+
+    <div class="right-align form-button-group">
+        <button mz-button flat
+            type="submit" 
+            class="center form-button submit-button"
+            [disabled]="!misForm.valid"
+            >Submit
+        </button>
+        <button mz-button flat
+            type="button" 
+            class="center form-button reset-button" 
+            (click)="onResetOrCancel('reset')"
+            [disabled]="!misForm.dirty"
+            >RESET
+        </button>
+        <button mz-button flat
+            type="button" 
+            class="center form-button cancel-button" 
+            (click)="onResetOrCancel('cancel')"
+            >Cancel
+        </button>
+    </div>
+</form>

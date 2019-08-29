@@ -1,0 +1,106 @@
+@import './theme';
+
+body{
+    font-family: 'Titillium Web', sans-serif;
+}
+
+nav {
+    background-color: $navBackground !important;
+    width:  100% !important;
+}
+
+.input{
+    white-space: nowrap !important;
+}
+
+.select-wrapper{
+    white-space: nowrap;
+}
+
+
+.select-dropdown {
+    white-space: nowrap !important;
+}
+
+.dropdown-content {
+    min-width: 175px !important;
+}
+
+.form-container .select-wrapper input.select-dropdown {
+    padding: 0 18px;
+    box-sizing: border-box;
+    margin-bottom: 30px;
+}
+
+.select-wrapper-defaults{
+    content: "";
+    position: absolute;
+    left: 5px;
+    height: 8px;
+    width: 8px;
+    border-radius: 50%;
+    top: 17px;
+}
+
+
+.form-container label {
+    left: 20px !important;
+}
+
+
+.form-container .required .select-wrapper:before,
+.form-container .required .input-field:before {
+    @extend .select-wrapper-defaults;
+    background: $invalid;
+    
+}
+
+.form-container .unRequire .input-field:before,
+.form-container .unRequire .select-wrapper:before {
+    @extend .select-wrapper-defaults;
+    background: $valid;
+}
+
+// Modal Styling
+
+.modal {min-height: 200px;max-width: 40%;}
+
+.modal .modal-content {
+    position: relative !important;
+    -webkit-transform: translate(0,0) !important;
+    left: 0 !important;
+    top: 0;
+    transform: translate(0,0) !important;
+    text-align: center;
+}
+.modal .modal-content h5 {
+    font-size: 19px;
+    line-height: 29px;
+    margin: 0;
+    letter-spacing: 0.5px;
+}
+
+.modal .wait-spinner {
+    position: relative;
+    top: 40px;
+}
+
+@media(max-width: 767px) {
+    .title-container {
+        width: 100% !important;
+        margin: 20px auto !important;
+        display: block;
+        padding: 0px 20px;
+    }
+
+    .modal {min-height: 150px;max-width: 65%;}
+
+    .title-container h5 {
+        vertical-align: middle;
+        position: relative;
+        top: 24px;
+        font-size: 15px;
+        line-height: 20px;
+    }
+    
+}

@@ -1,0 +1,104 @@
+<form #misForm="ngForm" (ngSubmit)="onAddData()">
+      
+        
+<input type="search" placeholder="Search by Tracking Id, Assignee, Item Name, Project Name, BSA, Status" name="search" [(ngModel)]="searchText">
+        <button mz-button flat
+        type="button" 
+        class="right edit-button"
+        [disabled]="selectedRowIndex == -1"
+        (click)="onEditData()">Edit
+    </button>
+    <button mz-button flat
+        type="submit" 
+        class="right add-button"
+        [disabled]="loadingData || loadingError">ADD
+    </button>
+
+<div class="container-outer">
+    <div class="container-inner">
+        <table>
+            
+            <thead class="form-head">
+                <th *ngFor="let header of misHeaders">
+                    {{header.name}} <span style="color: #ef5350;font-size:18px;">{{header.required ? '*' : ''}}</span>
+                </th>
+            </thead>
+            
+            <tbody>
+                <tr class="spacer"></tr>
+                <tr 
+                    *ngFor="let data of tableData | filter: searchText; let i = index" 
+                    class="loaded-data"
+                    [ngClass]="{'selected-row': i == selectedRowIndex, 'hint-row': i == selectedRowIndex -1}"
+                    (click)="onSelectRow(i, data.trackingId)">
+                    <td>{{data.trackingId}}</td>
+                    <td>{{data.misPeriod | dateFix}}</td>
+                    <td>{{data.poNumber}}</td>
+                    <td>{{data.tentativePoDate | dateFix}}</td>
+                    <td>{{data.poDescription}}</td>
+                    <td>{{data.tcuCode}}</td>
+                    <td>{{data.teamLead}}</td>
+                    <td>{{data.projectName}}</td>
+                    <td>{{data.relNonRel}}</td>
+                    <td>{{data.teamSplit}}</td>
+                    <td>{{data.accountCodes}}</td>
+                    <td>{{data.technology}}</td>
+                    <td>{{data.fscr}}</td>
+                    <td>{{data.itemName}}</td>
+                    <td>{{data.fscrName}}</td>
+                    <td>{{data.currentStatus}}</td>
+                    <td>{{data.challenge}}</td>
+                    <td>{{data.generalRemark}}</td>
+                    <td>{{data.patch}}</td>
+                    <td>{{data.assignedTo}}</td>
+                    <td>{{data.totalEffort}}</td>
+                    <td>{{data.totalEffortForMonth}}</td>
+                    <td>{{data.effortApprovalBy}}</td>
+                    <td>{{data.effortApprovalDate | dateFix}}</td>
+                    <td>{{data.approvalStatus}}</td>
+                    <td>{{data.requestReceivedDate | dateFix}}</td>
+                    <td>{{data.requestedByBSA}}</td>
+                    <td>{{data.walkthoughPlannedDate | dateFix}}</td>
+                    <td>{{data.devPlannedStartDate | dateFix}}</td>
+                    <td>{{data.devPlannedEndDate | dateFix}}</td>
+                    <td>{{data.uatRelPlannedDate | dateFix}}</td>
+                    <td>{{data.actualWalkthroughDate | dateFix}}</td>
+                    <td>{{data.assignedDevelopmentDate | dateFix}}</td>
+                    <td>{{data.actualDevStartDate}}</td>
+                    <td>{{data.actualDevEndDate | dateFix}}</td>
+                    <td>{{data.uatPromotionSignOffDate}}</td>
+                    <td>{{data.delayedDelivery}}</td>
+                    <td>{{data.reasonForDelay}}</td>
+                    <td>{{data.tsDocument}}</td>
+                    <td>{{data.reviewedBy}}</td>
+                    <td>{{data.promotionDate | dateFix}}</td>
+                    <td>{{data.promotedBy}}</td>
+                    <td>{{data.promotionTicketNumber}}</td>
+                    <td>{{data.misGroup}}</td>
+                    <td>{{data.invoiceNumber}}</td>
+                </tr>
+                <tr *ngIf="tableData.length == 0 && !loadingData && !loadingError">
+                    <b>No Data Found</b>
+                </tr>
+            </tbody>
+        </table>
+        
+    </div>
+</div>
+</form>
+
+<div class="spinner-container" *ngIf="loadingData">
+    <div class="spinner"></div>
+</div>
+<div class="reload-button-container" *ngIf="loadingError">
+    <div class="reload-button">
+        <p><b>Sorry! Could not load data. Please refresh... </b></p>
+        <button 
+            mz-button  
+            class="yellow accent-4 large"
+            (click)="reloadData()">
+            <i  class="material-icons right">refresh</i>
+            Refresh
+        </button>
+    </div>
+</div>

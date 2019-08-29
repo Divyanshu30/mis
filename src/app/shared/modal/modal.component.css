@@ -1,0 +1,14 @@
+.modal{
+    width: 70% !important;
+}
+
+.modal-content{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.wait-container{
+    /* display: flex; */
+}

@@ -1,0 +1,27 @@
+@import './../../../theme';
+
+.brand-logo{
+   left: 10px;
+   font-size: 24px;
+}
+
+.active{
+    background-color: $activeNav;
+}
+
+@media (max-width: 992px) {
+    .brand-logo{
+        left: 90px;
+        font-size: 30px;
+     } 
+}
+
+@media(max-width: 767px) {
+    .brand-logo {
+        font-size: 20px;
+        left: 10px;
+        transform: inherit;
+        top: 6px;
+    
+    }
+}

@@ -1,0 +1,40 @@
+{
+  "index": "/index.html",
+  "assetGroups": [{
+    "name": "app",
+    "installMode": "prefetch",
+    "resources": {
+      "files": [
+        "/index.html",
+        "/*.css",
+        "/*.js"
+      ],
+      "urls" :[
+        "http://127.0.0.1:8080/login",
+        "https://fonts.googleapis.com/css?family=Titillium+Web",
+        "https://fonts.googleapis.com/icon?family=Material+Icons"
+      ]
+    }
+  }, {
+    "name": "assets",
+    "installMode": "lazy",
+    "updateMode": "prefetch",
+    "resources": {
+      "files": [
+        "/assets/**"
+      ]
+    }
+  }],
+  "dataGroups": [{
+    "name": "posts",
+    "urls": [
+      "http://203.122.46.189:8281/api/project/allProjects"
+    ],
+    "cacheConfig": {
+      "maxSize": 5,
+      "maxAge": "6h",
+      "timeout": "3s",
+      "strategy": "freshness"
+    }
+  }]
+}   

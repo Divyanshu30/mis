@@ -1,0 +1,66 @@
+@import './../../../theme';
+
+:host {
+    display: block;
+}
+
+.auth{
+    margin-top: 80px;
+    background-color: #eceff1;
+    border-radius: 5px;
+    padding: 40px;
+    box-sizing: border-box;
+    min-height: 400px;
+}
+
+button{
+    margin-top: 20px;
+}
+
+input.ng-valid.ng-touched{
+    border-bottom: 1px solid $valid;
+}
+
+input.ng-invalid.ng-touched{
+    border-bottom: 1px solid $invalid;
+}
+
+.loader {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #1e88e5;
+    border-bottom: 4px solid #1e88e5;
+    border-right: 4px solid #1e88e5;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.success {
+    font-size: 20px;
+    font-weight: bold;
+    color: $valid!important;
+}
+
+@media(max-width: 767px) {
+    .auth{
+        background-color: #fff;
+        padding: 20px 0;
+        min-height: auto;
+    }
+
+    .login-form h5.center-align {
+        margin: 0 0 20px !important;
+    }
+
+    .login-form .col.s8.offset-s2 {
+        margin: 0;
+        width: 100%;
+        padding: 0;
+    }
+}

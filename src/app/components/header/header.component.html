@@ -1,0 +1,19 @@
+<mz-navbar class="navbar">
+    <h5 class="brand-logo">MIS Tracking</h5>
+    <mz-navbar-item-container [align]="'right'">
+      <mz-navbar-item
+        *ngIf="authService.isAuthenticated()"
+      ><a 
+            routerLink="mis/data"
+            routerLinkActive="active"
+        >Home 
+        <span routerLink="mis/add"></span>
+        <span routerLink="mis/edit"></span>
+    </a>
+    </mz-navbar-item>
+        <mz-navbar-item><a 
+            *ngIf="authService.isAuthenticated()"
+            (click)="onLogout()"
+        >Logout</a></mz-navbar-item>
+    </mz-navbar-item-container>
+</mz-navbar>

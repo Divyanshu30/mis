@@ -1,0 +1,33 @@
+<mz-modal [options]="modalOptions" #modal>
+    <mz-modal-content class="modal-content">
+
+        <div *ngIf="modalProperty === 'loading'">
+            <div class="wait-container">
+                    <div class="wait-text">
+                        <h4 *ngIf="loading">Please Wait </h4>
+                        <h4 *ngIf="!loading && loadingSuccess">Data added </h4>
+                        <h4 *ngIf="!loading && loadingError">Something went wrong. Please try again. </h4>
+                    </div>
+            </div>
+            <div class="wait-spinner" *ngIf="loading">
+                    <mz-spinner
+                        [color]="'blue'"
+                        [size]="'medium'">
+                    </mz-spinner>
+                </div>
+        </div>
+
+        <div *ngIf="modalProperty === 'reset'">
+            <h5>You might have some data in the form. Are you sure you want to reset?</h5>
+        </div>
+
+        <div *ngIf="modalProperty === 'cancel'">
+            <h5>You might have some data in the form. Are you sure you want to cancel? You will be redirected to home page.</h5>
+        </div>
+
+    </mz-modal-content>
+    <mz-modal-footer>
+        <button *ngIf="modalProperty === 'reset' || modalProperty === 'cancel'" mz-button [flat]="true" style="color: #6a1b9a" (click)="onContinue()" mz-modal-close>Yes</button>
+        <button *ngIf="modalProperty === 'reset' || modalProperty === 'cancel'" mz-button [flat]="true" style="color: #e53935" mz-modal-close>No</button>
+    </mz-modal-footer>
+</mz-modal>
